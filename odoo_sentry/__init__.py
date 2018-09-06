@@ -90,7 +90,7 @@ def serialize_exception(e):
 
 class ContextSentryHandler(SentryHandler):
     '''
-        extends SentryHandler, to capture logs only if 
+        extends SentryHandler, to capture logs only if
         `sentry_enable_logging` config options set to true
     '''
     def emit(self, rec):
