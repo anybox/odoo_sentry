@@ -23,7 +23,7 @@ import logging
 import sys
 import odoo.service.wsgi_server
 import odoo.addons.web.controllers.main
-import odoo.addons.report.controllers.main
+# import odoo.addons.report.controllers.main
 import odoo.http
 import odoo.tools.config as config
 import odoo.osv.osv
@@ -52,7 +52,7 @@ def get_user_context():
     cxt = {}
     try:
         session = getattr(request, 'session', {})
-    except RuntimeError, e:
+    except RuntimeError:
         return cxt
     cxt.update({
         'session': {
@@ -109,7 +109,7 @@ if ENABLE_LOGGING:
 
 if ALLOW_ORM_WARNING:
     odoo.addons.web.controllers.main._serialize_exception = serialize_exception
-    odoo.addons.report.controllers.main._serialize_exception = serialize_exception
+    # odoo.addons.report.controllers.main._serialize_exception = serialize_exception
 
 # wrap the main wsgi app
 odoo.service.wsgi_server.application = Sentry(
